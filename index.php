@@ -19,7 +19,7 @@ include("./app/movies.php");
         $fetchData = get_all_movies();
         if(is_array($fetchData)){      
         $sn=1;
-      foreach($fetchData as $data){
+      foreach($data as $fetchData){
     ?>
       <tr>
       <td><?php echo $sn; ?></td>
