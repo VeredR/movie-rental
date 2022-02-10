@@ -22,7 +22,7 @@ if(isset($loginMsg))
 ?>
 <form method="post" class="form horizontal login">
 <label class="col-sm-3 control-label" for="username">
-<div class="form-group">
+
 					<i class="fas fa-user"></i>
 				</label>
 				<input type="text" name="username" placeholder="Username or Email" id="username" required>
@@ -32,10 +32,7 @@ if(isset($loginMsg))
 				<input type="password" name="password" placeholder="Password" id="password" required>
 				<input type="submit" name="btn_login" class ="btn btn-success" value="Login">
 
-  
-</div>
-
 </form>
 <div class = "col-sm-offset-3 col-sm-9 m-t-15">
     You don't have an account? register here <a href="register.php"><p class ="text-info">Register Account</p></a>
-  </div>
+</div>
