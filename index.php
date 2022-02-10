@@ -1,6 +1,3 @@
-<?php
-include("./app/movies.php");
-?>
 <!DOCTYPE html>
 <html>
 	<head>
