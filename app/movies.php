@@ -1,5 +1,5 @@
 <?php
-include ("../DB.class.php");
+include ("DB.class.php");
 
 class movies{
     $db = new DB();
@@ -13,6 +13,6 @@ class movies{
 
     }
     function get_movie($name){
-        return $this->$db->getRows('movies',['select'=>'*', 'where'=>['name'=>$name])
+        return $this->$db->getRows('movies',['select'=>'*', 'where'=>['name'=>$name]])
     }
 }
