@@ -23,14 +23,17 @@ if(isset($loginMsg))
 <form method="post" class="form horizontal">
 
 <div class="form-group">
-  <lable class="col-sm-3 control-label">Username or Email</lable>
+  <lable class="col-sm-3 control-label">	<i class="fas fa-user"></i>Username or Email
+	</label>
   <div class="col-sm-6">
     <input type="text" name="text_username_email" class ="form-control" placeholder="Enter username or email"/>
   </div>
 </div> 
 
 <div class="form-group">
-  <lable class="col-sm-3 control-label">Password</lable>
+  <lable class="col-sm-3 control-label"><i class="fas fa-lock"></i>Password
+
+  </lable>
   <div class="col-sm-6">
     <input type="text" name="text_password" class ="form-control" placeholder="Enter Password"/>
   </div>
