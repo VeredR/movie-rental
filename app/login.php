@@ -27,7 +27,7 @@ else{
                 {
                     $_SESSION["user_login"] = $user["id"];
                     $logMsg = "Successfull Login";
-                    header("refresh:2; welcome.php");
+                    header("refresh:2; index.php");
                 }
                 else{
                     $errorMsg[]="wrong password";
@@ -42,7 +42,7 @@ else{
                 {
                     $_SESSION["user_login"] = $user["id"];
                     $logMsg = "Successfull Login";
-                    header("refresh:2; welcome.php");
+                    header("refresh:2; index.php");
                 }
                 else{
                     $errorMsg[]="wrong password";
