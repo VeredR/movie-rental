@@ -8,7 +8,7 @@ class movies{
         if !$movies:
             return []
         else:
-            return $movies
+            return $movies;
 
 
     }

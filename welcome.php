@@ -16,10 +16,20 @@ if(isset($_SESSION['user_login'])){
 ?>
 Welcome, 
 <?php 
+echo $user;
 echo $user['username'];
 }
 ?>
 </h2>
+
+<?php $movies =get_all_movies();
+  ?>
+<ul class="movies">
+   <?php foreach($movies as &$movie){?>
+    <a href= "./app/create_page.php?name=<?php echo $movie['name']; ?>">> <li><?php echo $movie['name']." release date:".$movie["release_date"];?></li></a>
+    <?php
+    } ?>
+</ul>
 
 
 
