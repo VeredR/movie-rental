@@ -22,7 +22,7 @@ if(isset($loginMsg))
 ?>
 <form method="post" class="form horizontal">
 
-<div class="form-group">
+<div class="form-group login">
   <lable class="col-sm-3 control-label">	<i class="fas fa-user"></i>Username or Email
 	</label>
   <div class="col-sm-6">
