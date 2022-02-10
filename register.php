@@ -51,7 +51,7 @@ if(isset($registerMsg))
 
 <div class="form-group">
   <div class = "col-sm-offset-3 col-sm-9 m-t-15">
-   You already have an account registered here? <a href="index.php"><p class ="text-info">Login To Account</p></a>
+   You already have an account registered here? <a href="connecting.php"><p class ="text-info">Login To Account</p></a>
 </div>
 </div>
 
