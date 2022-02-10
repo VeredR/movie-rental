@@ -31,7 +31,7 @@ else{
            $registerMsg ="Register Successfully";
            $_SESSION["user_login"] = $user["id"];
            $logMsg = "Successfull Login";
-           header("refresh:2; welcome.php");
+           header("location: welcome.php");
           
        }
     }
