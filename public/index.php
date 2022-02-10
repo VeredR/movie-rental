@@ -20,23 +20,21 @@ if(isset($loginMsg))
 <?php
 }
 ?>
-<form method="post" class="form horizontal">
+<form method="post" class="form horizontal login">
+<label class="col-sm-3 control-label" for="username">
+<div class="form-group">
+					<i class="fas fa-user"></i>
+				</label>
+				<input type="text" name="username" placeholder="Username or Email" id="username" required>
+				<label for="password">
+					<i class="fas fa-lock"></i>
+				</label>
+				<input type="password" name="password" placeholder="Password" id="password" required>
+				<input type="submit" name="btn_login" class ="btn btn-success" value="Login">
 
-<div class="form-group login">
-  <lable class="col-sm-3 control-label">	
-    <i class="fas fa-user"></i> Username or Email
-	</label>
-    <input type="text" name="text_username_email" class ="form-control" placeholder="Enter username or email"/>
-
-  <lable class="col-sm-3 control-label">
-    <i class="fas fa-lock"></i> Password
-  </lable>
-    <input type="text" name="text_password" class ="form-control" placeholder="Enter Password"/>
- 
-    <input type="submit" name="btn_login" class ="btn btn-success" value="Login">
-
-    <p class ="text-info"> You don't have an account? register here <a href="register.php">Register Account</p></a>
-
+  <div class = "col-sm-offset-3 col-sm-9 m-t-15">
+    You don't have an account? register here <a href="register.php"><p class ="text-info">Register Account</p></a>
+  </div>
 </div>
 
 </form>
