@@ -30,7 +30,7 @@ if(isset($loginMsg))
   </div>
 </div> 
 
-<div class="form-group">
+<div class="form-group login">
   <lable class="col-sm-3 control-label"><i class="fas fa-lock"></i>Password
 
   </lable>
@@ -39,13 +39,13 @@ if(isset($loginMsg))
   </div>
 </div> 
 
-<div class="form-group">
+<div class="form-group login">
   <div class="col-sm-offset-3 col-sm-9 m-t-15">
     <input type="submit" name="btn_login" class ="btn btn-success" value="Login">
   </div>
 </div> 
 
-<div class="form-group">
+<div class="form-group login">
   <div class = "col-sm-offset-3 col-sm-9 m-t-15">
     You don't have an account? register here <a href="register.php"><p class ="text-info">Register Account</p></a>
 </div>
