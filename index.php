@@ -1,5 +1,5 @@
 <?php 
-require "./header.php";
+
 if(isset($errorMsg))
 {
   foreach($errorMsg as $error)
