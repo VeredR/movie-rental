@@ -25,14 +25,14 @@ if(isset($registerMsg))
 <div class="form-group">
   <lable class="col-sm-3 control-label">Username</lable>
   <div class="col-sm-6">
-    <input type="text" name="text_username" class ="form-control" placeholder="Enter username or email"/>
+    <input type="text" name="text_username" class ="form-control" placeholder="Enter username"/>
   </div>
 </div> 
 
 <div class="form-group">
   <lable class="col-sm-3 control-label">Email</lable>
   <div class="col-sm-6">
-    <input type="text" name="text_email" class ="form-control" placeholder="Enter username or email"/>
+    <input type="text" name="text_email" class ="form-control" placeholder="Enter email"/>
   </div>
 </div> 
 
