@@ -20,7 +20,7 @@ if(isset($loginMsg))
 <?php
 }
 ?>
-<form method="post" class="form horizontal">
+<form method="post" class="form horizontal" action="./app/login.php">
 
 <div class="form-group">
   <lable class="col-sm-3 control-label">Username or Email</lable>
