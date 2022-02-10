@@ -28,22 +28,20 @@ class user{
         return $this->$db->getRows('users',['select'=>'*', 'where'=>['id'=>$id]]);
     }
 
-    function login($details){
-        $user = get_user_by_name($details['username']);
-        if ($user){
-            password_verify($details['password'],$user[0]['password'])
-        }
-        
+    function get_user_by_email($email){
+        return $this->$db->getRows('users',['select'=>'*', 'where'=>['email'=>$email]]);
     }
 
     function create_user($data){
     $pwd = $data['password'];
     $encrypted_pwd = password_hash($pwd);
     $username = $data['username']; 
+    $email = $data["email"]
     try{
-        $check = $this->$db->getRows('users',['select'=>'*', 'where'=>['username'=>$username,'password'=>$encrypted_pwd]]) 
+        $check = $this->$db->getRows('users',['select'=>'*', 'where'=>['username'=>$username,'password'=>$encrypted_pwd,'email'=>$email]]) 
         if (!$check){
-                $this->$db->insert('users',['username'=>$username,'passord'=>$encrypted_pwd]);
+                $this->$db->insert('users',['username'=>$username,'passord'=>$encrypted_pwd,'email'=>$email]);
+                return get_user_by_email($email);
         }
         if ($check){
             return "already exist";
