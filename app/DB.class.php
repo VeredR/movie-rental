@@ -13,7 +13,6 @@ class DB{
                 $conn -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
                 $this->db = $conn; 
             }catch(PDOException $e){ 
-                return $e->getMessage();
                 die("Failed to connect with MySQL: " . $e->getMessage()); 
             } 
         } 
@@ -158,5 +157,4 @@ class DB{
         $delete = $this->db->exec($sql); 
         return $delete?$delete:false; 
     } 
-}
 }
