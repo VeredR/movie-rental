@@ -1,9 +1,17 @@
 <?php
 require "./movies.php";
-/*session_start();
+
+/*
+session_start();
 if(!isset($_SESSION['user_login'])){
-    header("locaion: index.php");
+    header("locaion: connecting.php");
 }
+
+$id = $_SESSION['user_login'];
+$user = get_user_by_id($id);
+
+
+
 
 $id = $_SESSION['user_login'];
 */
