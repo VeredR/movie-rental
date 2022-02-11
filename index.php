@@ -7,7 +7,8 @@
 </h2>
 </center>
 
-<ul class="movies">
+<ul>
+    <li>test</li>
 <?php
 require "./app/movies.php";
 $movies = new movies();
@@ -18,7 +19,7 @@ foreach($all_movies as &$movie){?>
     <?php  
 }
  ?>
- <li>test</li>
+ 
 </ul>
 
 
