@@ -6,18 +6,15 @@ require "./header.php";
 
 </h2>
 </center>
-<?php
-require "./app/movies.php";
-$movies = get_all_movies();
-print ($movies);
-?>
+
 <ul class="movies">
 <?php
+require "./app/movies.php";
+$movies = new movies();
+$all_movies =$movies->get_all_movies();
 
-
-
-foreach($movies as &$movie){?>
-   <li><?php echo $movie[0]['name']." release date:".$movie[0]["release_date"];?></li>;
+foreach($all_movies as &$movie){?>
+   <li><?php echo $movie['name']." release date:".$movie["release_date"];?></li>;
     <?php  
 }
  ?>
