@@ -14,7 +14,7 @@ $movies = new movies();
 $all_movies =$movies->get_all_movies();
 
 foreach($all_movies as &$movie){?>
-   <li><?php echo $movie['name']." release date:".$movie["release_date"];?></li>;
+   <li><?php print($movie['name']." release date:".$movie["release_date"]);?></li>;
     <?php  
 }
  ?>
