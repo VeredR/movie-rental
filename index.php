@@ -14,9 +14,11 @@ require "./app/movies.php";
 $movies = get_all_movies();
 
 foreach($movies as $movie){?>
-   <li> <?php echo $movie['name']." release date:".$movie["release_date"];?></li>
-    <?php
-    } ?>
+    foreach($movie as $mov){
+   <li> <?php echo $movie[0]['name']." release date:".$movie[0]["release_date"];?></li>
+    <?php  
+    }
+} ?>
 </ul>
 
 
