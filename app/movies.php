@@ -1,5 +1,5 @@
 <?php
-include ("DB.class.php");
+include ("DB.php");
 
 
 $db = new DB();

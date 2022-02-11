@@ -1,5 +1,5 @@
 <?php
-require "DB.class.php";
+include ("DB.php");
 require "rentals.php";
 
 $db = new DB();

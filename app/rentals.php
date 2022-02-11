@@ -1,5 +1,5 @@
 <?php
-include ("DB.class.php");
+include ("DB.php");
 
 $db = new DB();
 function get_all_rentals(){
@@ -12,10 +12,10 @@ function get_all_rentals(){
 
 }
 function get_rentals_of_user($user){
-    return $db->getRows('rentals',['select'=>'*', 'where'=>['user_id'=>$user]]);
+    return $this->$db->getRows('rentals',['select'=>'*', 'where'=>['user_id'=>$user]]);
 }
 function get_rentals_of_movie($movie){
-    return $db->getRows('rentals'['select'=>'*','where'=>['movie_id'=>$movie]]);
+    return $this->$db->getRows('rentals'['select'=>'*','where'=>['movie_id'=>$movie]]);
 }
 
 
