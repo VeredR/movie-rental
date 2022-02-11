@@ -21,7 +21,7 @@ echo $user['username'];
 }*/
 ?>
 </h2>
-
+</center>
 
 <?php $movies =get_all_movies();
   ?>
@@ -35,4 +35,3 @@ echo $user['username'];
 
 
 <a href="logout.php">Logout</a>
-</center>
