@@ -5,8 +5,8 @@ class movies{
     $db = new DB();
     function get_all_movies(){
         $movies = $this->$db->getRows('movies',['select'=>'*']);
-        if !$movies:
-            return []
+        if !$movies or empty($movie_id):
+            return False
         else:
             return $movies;
 
