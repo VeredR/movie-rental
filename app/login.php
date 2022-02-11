@@ -2,7 +2,7 @@
 require "./header.php";
 require_once "./user.php";
 session_start();
-$userHelp = new user();
+
 if isset($_SESSION["user_login"]){
     header("location: index.php");
 }
@@ -38,7 +38,7 @@ else{
 
         }
         else if !empty($email){
-            $user =$userHelp->get_user_by_email($email);
+            $user =get_user_by_email($email);
             if ($user["email"] == $email){
                 if(password_verify($password,$user["password"]))
                 {

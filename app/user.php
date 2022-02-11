@@ -1,38 +1,31 @@
 <?php
 require "DB.class.php";
 require "rentals.php";
-class user{
-    $db = new DB();
-    //create
 
-    //login
+$db = new DB();
 
-    //rent
-
-   
-    
-    function get_all_users(){
-        $users = $this->$db->getRows('users',['select'=>'*']);
-        if !$movies:
-            return [];
-        else:
-            return $users;
+function get_all_users(){
+    $users = $this->$db->getRows('users',['select'=>'*']);
+    if !$movies:
+        return [];
+    else:
+        return $users;
 
 
-    }
-    function get_user_by_name($name){
-        return $this->$db->getRows('users',['select'=>'*', 'where'=>['username'=>$name]]);
-    }
+}
+function get_user_by_name($name){
+    return $this->$db->getRows('users',['select'=>'*', 'where'=>['username'=>$name]]);
+}
 
-    function get_user_by_id($id){
-        return $this->$db->getRows('users',['select'=>'*', 'where'=>['id'=>$id]]);
-    }
+function get_user_by_id($id){
+    return $this->$db->getRows('users',['select'=>'*', 'where'=>['id'=>$id]]);
+}
 
-    function get_user_by_email($email){
-        return $this->$db->getRows('users',['select'=>'*', 'where'=>['email'=>$email]]);
-    }
+function get_user_by_email($email){
+    return $this->$db->getRows('users',['select'=>'*', 'where'=>['email'=>$email]]);
+}
 
-    function create_user($data){
+function create_user($data){
     $pwd = $data['password'];
     $encrypted_pwd = password_hash($pwd);
     $username = $data['username']; 
@@ -50,7 +43,6 @@ class user{
         return False;
     }
 
-    }
-   
-
 }
+
+
