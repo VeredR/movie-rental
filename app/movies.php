@@ -4,7 +4,7 @@ include ("DB.class.php");
 
 $db = new DB();
 function get_all_movies(){
-    $movies = $this->$db->getRows('movies',['select'=>'*']);
+    $movies = $db->getRows('movies',['select'=>'*']);
     if !$movies or empty($movie_id):
         return False
     else:
@@ -13,7 +13,7 @@ function get_all_movies(){
 
 }
 function get_movie($name){
-    return $this->$db->getRows('movies',['select'=>'*', 'where'=>['name'=>$name]])
+    return $db->getRows('movies',['select'=>'*', 'where'=>['name'=>$name]])
 }
 function rent_movie($user_id, $movie_id){
     $ttl =new DateTime('NOW');

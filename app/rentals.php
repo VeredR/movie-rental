@@ -3,7 +3,7 @@ include ("DB.class.php");
 
 $db = new DB();
 function get_all_rentals(){
-    $movies = $this->$db->getRows('rentals',['select'=>'*']);
+    $movies = $db->getRows('rentals',['select'=>'*']);
     if !$movies:
         return []
     else:
@@ -12,10 +12,10 @@ function get_all_rentals(){
 
 }
 function get_rentals_of_user($user){
-    return $this->$db->getRows('rentals',['select'=>'*', 'where'=>['user_id'=>$user]]);
+    return $db->getRows('rentals',['select'=>'*', 'where'=>['user_id'=>$user]]);
 }
 function get_rentals_of_movie($movie){
-    return $this->$db->getRows('rentals'['select'=>'*','where'=>['movie_id'=>$movie]]);
+    return $db->getRows('rentals'['select'=>'*','where'=>['movie_id'=>$movie]]);
 }
 
 
