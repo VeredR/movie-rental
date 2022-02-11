@@ -5,9 +5,9 @@ require "./header.php";
 <h2>
 Welcome to our movies rental site!
 </h2>
-</center>
 
-<ul>
+
+
 <?php
 require "./app/movies.php";
 
@@ -31,7 +31,7 @@ foreach($movies as &$movie){?>
 echo "</ul></div>";
  ?>
 
-
+</center>
 
 
 <a href="logout.php">Logout</a>
