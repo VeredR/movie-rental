@@ -9,7 +9,7 @@ require "./header.php";
 <?php
 require "./app/movies.php";
 $movies = get_all_movies();
-echo $movies;
+print ($movies);
 ?>
 <ul class="movies">
 <?php
