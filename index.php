@@ -12,7 +12,7 @@ require "./header.php";
 require "./app/movies.php";
 
 $movies = get_all_movies();
-echo $movies;
+echo "<p>".$movies."</p>";
 foreach($movies as &$movie){?>
    <li><?php echo $movie[0]['name']." release date:".$movie[0]["release_date"];?></li>;
     <?php  
