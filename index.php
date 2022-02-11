@@ -6,7 +6,7 @@ require "./app/movies.php";
 
 /*session_start();
 if(!isset($_SESSION['user_login'])){
-    header("locaion: index.php");
+    header("locaion: connecting.php");
 }
 
 $id = $_SESSION['user_login'];
@@ -18,10 +18,10 @@ Welcome,
 <?php 
 echo $user;
 echo $user['username'];
-}
+}*/
 ?>
 </h2>
-*/
+
 
 <?php $movies =get_all_movies();
   ?>
