@@ -14,7 +14,7 @@ $movies = new movies();
 $all_movies =$movies->get_all_movies();
 
 foreach($all_movies as &$movie){?>
-   <li><?php print($movie['name']." release date:".$movie["release_date"]);?></li>;
+   <a href ="./app/create_page.php?name=".<?php echo $movie['name'];?> ><li><?php echo $movie['name']." release date: ".$movie["release_date"];?></li></a>;
     <?php  
 }
  ?>
