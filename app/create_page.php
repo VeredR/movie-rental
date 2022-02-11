@@ -1,6 +1,6 @@
 <?php
 require "./movies.php";
-
+$moviesActions = new movies();
 /*
 session_start();
 if(!isset($_SESSION['user_login'])){
@@ -18,7 +18,7 @@ $id = $_SESSION['user_login'];
 
 $movie_name = $_GET['name'];
 
-$movie = get_movie($movie_name);
+$movie = $moviesActions->get_movie($movie_name);
 
 ?>
 <h1>

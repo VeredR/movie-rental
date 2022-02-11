@@ -2,8 +2,9 @@
 require "./header.php";
 require_once "./user.php";
 session_start();
+$userHelp = new user();
 if isset($_SESSION["user_login"]){
-    header("location: welcome.php");
+    header("location: index.php");
 }
 
 if(isset($_REQUEST["btn_login"]))
@@ -22,7 +23,7 @@ else if (empty($password)){
 else{
     try{
         if !empty($username){
-            $user =get_user_by_name($username)
+            $user =$userHelp->get_user_by_name($username)
             if ($user["username"] == $username){
                 if(password_verify($password,$user["password"]))
                 {
@@ -37,7 +38,7 @@ else{
 
         }
         else if !empty($email){
-            $user =get_user_by_email($email);
+            $user =$userHelp->get_user_by_email($email);
             if ($user["email"] == $email){
                 if(password_verify($password,$user["password"]))
                 {

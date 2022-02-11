@@ -20,7 +20,7 @@ if(isset($registerMsg))
 <?php
 }
 ?>
-<form method="post" class="form horizontal" action="index.php">
+<form method="post" class="form horizontal" >
 
 <div class="form-group">
   <lable class="col-sm-3 control-label">Username</lable>

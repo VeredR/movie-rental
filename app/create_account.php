@@ -1,5 +1,6 @@
 <?php
 require_once "./user.php";
+$userActions = new user();
 
 
 if(isset($_REQUEST["btn_register"]))
@@ -26,12 +27,12 @@ else if (strlen($password)< 6){
 }
 else{
     try{
-       $user = create_user(array("username"=>$username,"email"=>$email,"password"=>$password))
+       $user = $userActions->create_user(array("username"=>$username,"email"=>$email,"password"=>$password))
        if($user){
            $registerMsg ="Register Successfully";
            $_SESSION["user_login"] = $user["id"];
            $logMsg = "Successfull Login";
-           header("location: welcome.php");
+           header("location: index.php");
           
        }
     }
