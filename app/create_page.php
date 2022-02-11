@@ -50,3 +50,4 @@ else if ($movie_rentals){
 
 }*/
 ?>
+<a href="logout.php">Logout</a>

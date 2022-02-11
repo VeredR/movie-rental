@@ -1,34 +1,22 @@
 <?php
 require "./header.php";
-?>
-<center>
-<h2>
+require_once "./app/movies.php";
 
-</h2>
-</center>
+$all_movies = get_all_movies();
+?>
 
 <table>
-
 <?php
-require "./app/movies.php";
-
-$all_movies =get_all_movies();
-
-foreach($all_movies as $movie){?>
-    <tr>
-        <?php
-            echo "<td>" . $movie["name"] . "</td>" .
+foreach($all_movies as $movie){
+            echo "<tr>" .
+                "<td>" . $movie["name"] . "</td>" .
                 "<td>" . $movie["score"] . "</td>" .
-                "<td>" . $movie["release_date"] . "</td>";
-        ?>
-    </tr>
-    <?php
+                "<td>" . $movie["release_date"] . "</td>" .
+                "</tr>"; 
 }
  ?>
-</table>
+ </table>
  
 
 
 
-
-<a href="logout.php">Logout</a>
