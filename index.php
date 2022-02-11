@@ -3,7 +3,7 @@ require "./header.php";
 ?>
 <center>
 <h2>
-
+Welcome to our movies rental site!
 </h2>
 </center>
 
