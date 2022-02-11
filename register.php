@@ -20,7 +20,7 @@ if(isset($registerMsg))
 <?php
 }
 ?>
-<form method="post" class="form horizontal" action="./app/create_account.php">
+<form method="post" class="form horizontal" action="index.php">
 
 <div class="form-group">
   <lable class="col-sm-3 control-label">Username</lable>
