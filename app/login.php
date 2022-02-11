@@ -1,4 +1,5 @@
 <?php
+require "./header.php";
 require_once "./user.php";
 session_start();
 if isset($_SESSION["user_login"]){

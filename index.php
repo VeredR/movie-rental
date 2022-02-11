@@ -1,6 +1,7 @@
 <center>
 <h2>
 <?php
+require "./header.php";
 require_once "./app/user.php";
 require "./app/movies.php";
 
@@ -23,11 +24,11 @@ echo $user['username'];
 </h2>
 </center>
 
-<?php $movies =get_all_movies();
+<?php $movies = get_all_movies();
   ?>
 <ul class="movies">
    <?php foreach($movies as &$movie){?>
-    <a href= "./app/create_page.php?name=<?php echo $movie['name']; ?>">> <li><?php echo $movie['name']." release date:".$movie["release_date"];?></li></a>
+    <li><a href= "./app/create_page.php?name=<?php echo $movie['name']; ?>"> <?php echo $movie['name']." release date:".$movie["release_date"];?></a></li>
     <?php
     } ?>
 </ul>
