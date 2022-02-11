@@ -7,20 +7,24 @@ require "./header.php";
 </h2>
 </center>
 
-<ul>
-    <li>test</li>
+<table>
+
 <?php
 require "./app/movies.php";
 $movies = new movies();
 $all_movies =$movies->get_all_movies();
 
-foreach($all_movies as &$movie){?>
-  <li><?php echo $movie["name"]." release date: ".$movie["release_date"];?></li>;
-    <?php  
+foreach($all_movies as &$movie){
+            echo "<tr>" .
+                "<td>" . $movie["name"] . "</td>" .
+                "<td>" . $movie["score"] . "</td>" .
+                "<td>" . $movie["release_date"] . "</td>" .
+                "</tr>"; 
 }
  ?>
+</table>
  
-</ul>
+
 
 
 
