@@ -16,7 +16,7 @@ if ($movies){
     echo $movies;
 echo "<div class= 'movies-list'><ul>"; 
 foreach($movies as $movie){
-    foreach ($movie as &$mov){?>
+   ?>
    <li class="movie">
       <!-- <a href = "./app/create_page.php?name="<?php echo $mov['name']; ?>>-->
           <div class="row">
@@ -30,7 +30,7 @@ foreach($movies as $movie){
             </div>
       <!--  </a> -->
     </li>
-<?php  }
+<?php  
 }
 echo "</ul></div>";
 }
