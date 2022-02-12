@@ -59,7 +59,7 @@ class DB{
                     $data = $query->fetch(PDO::FETCH_ASSOC); 
                     break; 
                 default: 
-                    $data = ''; 
+                    $data = 'nothing'; 
             } 
         }else{ 
             if($query->rowCount() > 0){ 
