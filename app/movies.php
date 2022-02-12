@@ -5,15 +5,23 @@ include ("DB.php");
 $db = new DB();
 function get_all_movies(){
     $movies = $db->getRows('movies',['select'=>'*']);
-    if !$movies || empty($movies) || !count($movies):
-        return False
-    else:
+    if (!$movies || empty($movies) || !count($movies)){
+        return false;
+    }
+    else{
         return $movies;
-
+    }
 
 }
 function get_movie($name){
-    return $db->getRows('movies',['select'=>'*', 'where'=>['name'=>$name]])
+    $movie =  $db->getRows('movies',['select'=>'*', 'where'=>['name'=>$name]])
+
+    if (!$movie || empty($movie) || !count($movie)){
+        return false;
+    }
+    else{
+        return $movie;
+    }
 }
 function rent_movie($user_id, $movie_id){
     $ttl =new DateTime('NOW');
