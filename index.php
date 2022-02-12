@@ -14,7 +14,7 @@ require "./app/movies.php";
 $movies = get_all_movies();
 if count($movies){
     echo "<div class='movies-list'><ul>"; 
-    foreach($movies as &$movie){
+    foreach($movies as $movie){
    ?>
    <li class="movie">
        <a href = "./app/create_page.php?name="<?php echo $movie['name']; ?>>
