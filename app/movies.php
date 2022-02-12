@@ -5,7 +5,7 @@ include ("DB.php");
 $db = new DB();
 function get_all_movies(){
     $movies = $db->getRows('movies',['select'=>'*']);
-    if !$movies or empty($movie_id):
+    if !$movies || empty($movies) || !count($movies):
         return False
     else:
         return $movies;
