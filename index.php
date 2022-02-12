@@ -17,7 +17,7 @@ if count($movies){
     foreach($movies as &$movie){
    ?>
    <li class="movie">
-      <!-- <a href = "./app/create_page.php?name="<?php //echo $movie['name']; ?>>-->
+       <a href = "./app/create_page.php?name="<?php echo $movie['name']; ?>>
           <div class="row">
             <div class="col-md-9">
                 <h2><?php echo $movie['name'];?></h2>
@@ -27,7 +27,7 @@ if count($movies){
                 </div>
                 </div>
             </div>
-      <!--  </a> -->
+        </a>
     </li>
 <?php  
 }
