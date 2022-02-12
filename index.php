@@ -33,12 +33,10 @@ if count($movies){
 }
 echo "</ul></div>";
 }
-else{
-    echo "<p>no movies</p>";
-}
+
  ?>
 
 </center>
-
+No Movies
 
 <a href="logout.php">Logout</a>
