@@ -12,10 +12,9 @@ Welcome to our movies rental site!
 require "./app/movies.php";
 
 $movies = get_all_movies();
-if ($movies){
-    echo $movies;
-echo "<div class= 'movies-list'><ul>"; 
-foreach($movies as $movie){
+if count($movies){
+    echo "<div class='movies-list'><ul>"; 
+    foreach($movies as $movie){
    ?>
    <li class="movie">
       <!-- <a href = "./app/create_page.php?name="<?php //echo $movie['name']; ?>>-->
