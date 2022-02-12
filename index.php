@@ -12,6 +12,8 @@ Welcome to our movies rental site!
 require "./app/movies.php";
 
 $movies = get_all_movies();
+if ($movies){
+    echo $movies;
 echo "<div class= 'movies-list'><ul>"; 
 foreach($movies as $movie){
     foreach ($movie as &$mov){?>
@@ -31,6 +33,7 @@ foreach($movies as $movie){
 <?php  }
 }
 echo "</ul></div>";
+}
  ?>
 
 </center>
