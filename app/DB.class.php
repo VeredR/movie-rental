@@ -6,12 +6,12 @@ class DB{
     private $dbName = "movieRentalDB";
 
     public function __construct(){ 
-        if(!isset($this->db)){ 
+        if(!isset($this->conn)){ 
             // Connect to the database 
             try{ 
                 $conn = new PDO("mysql:host=".$this->dbHost.";dbname=".$this->dbName, $this->dbUsername, $this->dbPassword); 
                 $conn -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-                $this->db = $conn; 
+                $this->conn = $conn; 
             }catch(PDOException $e){ 
                 die("Failed to connect with MySQL: " . $e->getMessage()); 
             } 
@@ -47,7 +47,7 @@ class DB{
             $sql .= ' LIMIT '.$conditions['limit'];  
         } 
          
-        $query = $this->db->prepare($sql); 
+        $query = $this->conn->prepare($sql); 
         $query->execute(); 
          
         if(array_key_exists("return_type",$conditions) && $conditions['return_type'] != 'all'){ 
@@ -59,7 +59,7 @@ class DB{
                     $data = $query->fetch(PDO::FETCH_ASSOC); 
                     break; 
                 default: 
-                    $data = 'nothing'; 
+                    $data = ''; 
             } 
         }else{ 
             if($query->rowCount() > 0){ 
@@ -78,23 +78,20 @@ class DB{
         if(!empty($data) && is_array($data)){ 
             $columns = ''; 
             $values  = ''; 
-            $i = 0; 
-            if(!array_key_exists('created',$data)){ 
-                $data['created'] = date("Y-m-d H:i:s"); 
-            } 
-            if(!array_key_exists('modified',$data)){ 
-                $data['modified'] = date("Y-m-d H:i:s"); 
-            } 
+            $i = 0;
  
             $columnString = implode(',', array_keys($data)); 
             $valueString = ":".implode(',:', array_keys($data)); 
+            
             $sql = "INSERT INTO ".$table." (".$columnString.") VALUES (".$valueString.")"; 
-            $query = $this->db->prepare($sql); 
+            $query = $this->conn->prepare($sql); 
             foreach($data as $key=>$val){ 
                  $query->bindValue(':'.$key, $val); 
             } 
+           
+           
             $insert = $query->execute(); 
-            return $insert?$this->db->lastInsertId():false; 
+            return $insert?$this->conn->lastInsertId():false; 
         }else{ 
             return false; 
         } 
@@ -129,7 +126,7 @@ class DB{
                 } 
             } 
             $sql = "UPDATE ".$table." SET ".$colvalSet.$whereSql; 
-            $query = $this->db->prepare($sql); 
+            $query = $this->conn->prepare($sql); 
             $update = $query->execute(); 
             return $update?$query->rowCount():false; 
         }else{ 
@@ -154,7 +151,7 @@ class DB{
             } 
         } 
         $sql = "DELETE FROM ".$table.$whereSql; 
-        $delete = $this->db->exec($sql); 
+        $delete = $this->conn->exec($sql); 
         return $delete?$delete:false; 
     } 
 }

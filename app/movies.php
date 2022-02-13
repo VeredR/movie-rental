@@ -1,30 +1,41 @@
 <?php
-require "DB.php";
+include_once ("DB.class.php");
 
+class movies{
+    public function __construct(){ 
+        if(!isset($this->db)){ 
+            $this->db = new DB();
+        }
+    }
+    function get_all_movies(){
+        
+        $movies = $this->db->getRows('movies',['select'=>'*']);
+        if (!$movies || empty($movies) || !count($movies)){
+            return false;
+        }
+        else{
+            
+            return json_encode($movies);
+        }
 
-$db = new DB();
-function get_all_movies(){
-    $movies = $db->getRows('movies',['select'=>'*']);
-    if (!$movies || empty($movies) || !count($movies)){
-        return false;
     }
-    else{
-        return $movies;
-    }
+    function get_movie($name){
+        
 
-}
-function get_movie($name){
-    $movie =  $db->getRows('movies',['select'=>'*', 'where'=>['name'=>$name]])
+        $movie = $this->db->getRows('movies',['select'=>'*', 'where'=>['name'=>$name]]);
 
-    if (!$movie || empty($movie) || !count($movie)){
-        return false;
+        if (!$movie || empty($movie) || !count($movie)){
+            return array();
+        }
+        else{
+            return $movie[0];
+        }
     }
-    else{
-        return $movie;
+    function rent_movie($user_id, $movie_id){
+        $ttl =new DateTime('NOW');
+        $ttl->modify('+1 week');
+        $ttl = $ttl->format('Y-m-d H:i:s');
+        $this->db->insert('rentals',array('user_id'=>$user_id,'movie_id'=>$movie_id,'ttl'=>$ttl));
     }
-}
-function rent_movie($user_id, $movie_id){
-    $ttl =new DateTime('NOW');
-    $ttl->modify('+1 week');
-    $this -> $db->insert('rentals',['user_id'=>$user_id,'movie_id'=>$movie_id,'ttl'=>$ttl]);
+    
 }
