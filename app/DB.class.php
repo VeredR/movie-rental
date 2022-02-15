@@ -7,7 +7,6 @@ class DB{
 
     public function __construct(){ 
         if(!isset($this->conn)){ 
-            // Connect to the database 
             try{ 
                 $conn = new PDO("mysql:host=".$this->dbHost.";dbname=".$this->dbName, $this->dbUsername, $this->dbPassword); 
                 $conn -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
@@ -75,6 +74,7 @@ class DB{
      * @param array the data for inserting into the table 
      */ 
     public function insert($table,$data){ 
+        
         if(!empty($data) && is_array($data)){ 
             $columns = ''; 
             $values  = ''; 
@@ -86,11 +86,12 @@ class DB{
             $sql = "INSERT INTO ".$table." (".$columnString.") VALUES (".$valueString.")"; 
             $query = $this->conn->prepare($sql); 
             foreach($data as $key=>$val){ 
+                $val = strip_tags($val);
                  $query->bindValue(':'.$key, $val); 
             } 
            
-           
             $insert = $query->execute(); 
+            
             return $insert?$this->conn->lastInsertId():false; 
         }else{ 
             return false; 

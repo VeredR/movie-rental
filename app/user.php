@@ -62,19 +62,19 @@ class user{
 
     function create_user($data){
         $pwd = $data['password'];
-        $encrypted_pwd = password_hash($pwd);
+       
         $username = $data['username']; 
-        $email = $data["email"];
-
-        $check = $this->db->getRows('users',['select'=>'*', 'where'=>['username'=>$username,'password'=>$encrypted_pwd,'email'=>$email]]); 
-        if (!$check||empty($check)){
-                $this->db->insert('users',['username'=>$username,'passord'=>$encrypted_pwd,'email'=>$email]);
-                return get_user_by_email($email);
-        }
-        if ($check){
-            return "already exist";
-        }
+        $email = $data['email'];
+       
         
+        $created_user =$this->db->insert('users',['username'=>$username,'password'=>$pwd,'email'=>$email]);
+        
+        if ($created_user){
+            return true;
+        }
+        else if(!$created_user){
+            return false;
+        }
 
     }
 }

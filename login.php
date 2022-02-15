@@ -1,148 +1,108 @@
 <?php 
-require "./header.php";
-require_once "./app/user.php";
-if(isset($errorMsg))
-{
-  foreach($errorMsg as $error)
-  {
-?>
-<?php
-
-$userActions = new user();
 session_start();
-$redirect = NULL;
-if($_GET['location'] != '') {
-    $redirect = $_GET['location'];
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+  header("location: index.php");
+  exit;
 }
-if(isset($_SESSION["user_login"])){
-    if (!isset($redirect)){
-    header("Location: index.php");
-    exit();
+require_once "./app/user.php";
+$userActions = new user();
+$username = $password = "";
+$username_err = $password_err = $login_err = "";
+
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    if(empty(trim($_POST["username"]))){
+        $username_err = "Please enter username.";
+    } else{
+        $username = trim($_POST["username"]);
     }
-    else if(isset($redirect)){
-    $url = urlencode($redirect);
     
-    header("Location: " . $url);
-    exit();
-
+    if(empty(trim($_POST["password"]))){
+        $password_err = "Please enter your password.";
+    } else{
+        $password = trim($_POST["password"]);
     }
-}
+    
 
-if(isset($_REQUEST["btn_login"]))
-{
-    $username = strip_tags($_REQUEST["txt_username_email"]);
-    $email = strip_tags($_REQUEST["txt_username_email"]);
-    $password = strip_tags($_REQUEST["txt_password"]);
-
-if(empty($username)|| empty($email)){
-    $errorMsg[]= "please enter username or email";
-}
-else if (empty($password)){
-    $errorMsg[]="please enter password";
-}
-else{
-      if(!empty($username)){
-          $user =$userActions->get_user_by_name($username);
-          if(!empty($user)){
-            if($user["username"] == $username){
-                if(password_verify($password,$user["password"]))
-                {
-                    $_SESSION["user_login"] = $user["id"];
-                    $logMsg = "Successfull Login";
-                    header("refresh:2; index.php");
-                    exit();
-                }
-                else{
-                    $errorMsg[]="wrong password";
-                }
-            } 
-          }
-          else if(empty($user)){
-            $errorMsg[]="This User is not registered in our app, redirecting to registration page";
-            header("Location: ./register.php");
-            exit();
-          }
+    if(empty($username_err) && empty($password_err)){
+      $redirect = NULL;
+      if($_POST['location'] != '') {
+        $redirect = $_POST['location'];
       }
-      else if(!empty($email)){
-          $user =$userActions->get_user_by_email($email);
-          if(!empty($user)){
-            if($user["email"] == $email){
-                if(password_verify($password,$user["password"]))
-                {
-                    $_SESSION["user_login"] = $user["id"];
-                    $logMsg = "Successfull Login";
-                    if (!isset($redirect)){
-                      header("refresh:2; index.php");
-                      exit();
-                      }
-                      else if (isset($redirect)){
-                      $url .= '&location=' . urlencode($redirect);
-                      }
-                      header("refresh:2; Location: " . $url);{
-                  
-                      exit();
-                      }
-                    
-                }
-                else{
-                    $errorMsg[]="wrong password";
-              }
+    $user =$userActions->get_user_by_name($username);
+    if(!empty($user)){
+      if($user["username"] == $username){
+          if(password_verify($password,$user["password"])){
+              session_start();
+              $_SESSION["loggedin"] = true;
+              $_SESSION["id"] = $id;
+              $_SESSION["username"] = $username;
+              if(isset($redirect)) {
+                $url = 'login.php';
+                $url .= '&location=' . urlencode($redirect);
+                
+                header("Location: " . $url);
+                exit;
+                
+            }else{                   
+              header("location: index.php");
+              exit;
           } 
-      
-      else{
-          $errorMsg[]="wrong username or email";
+      }else{
+          $login_err = "Invalid username or password.";  
       }
-    }
-    if(empty($user)){
-      $errorMsg[]="This User is not registered in our app, redirecting to registration page";
-      header("Location: ./register.php");
-      exit();
-    }
-  }
+  }else{
+    $login_err = "Invalid username or password.";
+}
+}else{
+    echo "Oops! Something went wrong. Please try again later.";
 }
 }
-?>
-<div class = "alert alert-danger">
-  <strong><?php echo $error; ?></strong>
-</div>
-<?php
-  }
-} 
-if(isset($loginMsg))
-{
-?>
-<div class="alert alert-success">
-  <strong><?php echo $loginMsg; ?></strong>
-</div>
-<?php
 }
+
 ?>
-<form method="post" class="form horizontal" >
 
-<div class="form-group">
-  <lable class="col-sm-3 control-label">Username or Email</lable>
-  <div class="col-sm-6">
-    <input type="text" name="text_username_email" class ="form-control" placeholder="Enter username or email"/>
-  </div>
-</div> 
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+       <title>Login</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<link href="./css/style.css" rel="stylesheet" type="text/css">
 
-<div class="form-group">
-  <lable class="col-sm-3 control-label">Password</lable>
-  <div class="col-sm-6">
-    <input type="text" name="text_password" class ="form-control" placeholder="Enter Password"/>
-  </div>
-</div> 
+	</head>
+  <body>
+<div class="wrapper">
+    <h2>Login</h2>
+    <p>Please fill in your credentials to login.</p>
 
-<div class="form-group">
-  <div class="col-sm-offset-3 col-sm-9 m-t-15">
-    <input type="submit" name="btn_login" class ="btn btn-success" value="Login">
-  </div>
-</div> 
+    <?php 
+    if(!empty($login_err)){
+        echo '<div class="alert alert-danger">' . $login_err . '</div>';
+    }        
+    ?>
 
-<div class="form-group">
-  <div class = "col-sm-offset-3 col-sm-9 m-t-15">
-    You don't have an account? register here: <a href="./register.php"><p class ="text-info">Register Account</p></a>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+            <span class="invalid-feedback"><?php echo $username_err; ?></span>
+        </div>    
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+            <span class="invalid-feedback"><?php echo $password_err; ?></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Login">
+        </div>
+        <?php if(isset($_GET['location'])) {?>
+          <input type="hidden" name="location" value=<?php echo "'".trim($_GET['location'])."'";?> />
+      <?php }
+      ?>
+      <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+  </form>
 </div>
-</div>
-
-</form>
+</body>
+</html>

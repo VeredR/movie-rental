@@ -34,8 +34,15 @@ class movies{
     function rent_movie($user_id, $movie_id){
         $ttl =new DateTime('NOW');
         $ttl->modify('+1 week');
+        $ttl->modify('+1 day');
         $ttl = $ttl->format('Y-m-d H:i:s');
-        $this->db->insert('rentals',array('user_id'=>$user_id,'movie_id'=>$movie_id,'ttl'=>$ttl));
+        $insertion= $this->db->insert('rentals',array('user_id'=>$user_id,'movie_id'=>$movie_id,'ttl'=>$ttl));
+        if($insertion){
+            return $insertion;
+        }
+        else{
+            return FALSE;
+        }
     }
     
 }
